@@ -11,7 +11,7 @@ RUN dotnet restore
 
 EXPOSE 80
 EXPOSE 443
-EXPOSE 5000
-EXPOSE 5001
+EXPOSE 5100
+EXPOSE 5101
 
 ENTRYPOINT dotnet run --no-launch-profile

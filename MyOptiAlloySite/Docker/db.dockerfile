@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/mssql/server:2019-latest AS base
+FROM mcr.microsoft.com/mssql/server:2025-latest AS base
 
 ENV ACCEPT_EULA=Y
 
