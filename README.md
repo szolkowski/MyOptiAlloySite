@@ -23,12 +23,11 @@ All commands should be run from the `MyOptiAlloySite/` directory (where `docker-
 
 | Command | Description |
 | ------- | ----------- |
+| `docker compose build --no-cache web` | Rebuild only the web image from scratch |
 | `docker compose up --build` | Build images and start all services |
-| `docker compose up --build --no-cache` | Full rebuild ignoring Docker layer cache (use after changing NuGet packages or Dockerfile) |
 | `docker compose up -d` | Start services in detached (background) mode |
 | `docker compose down` | Stop and remove containers and networks |
 | `docker compose restart web` | Restart only the web container |
-| `docker compose build --no-cache web` | Rebuild only the web image from scratch |
 
 ### Notes
 
