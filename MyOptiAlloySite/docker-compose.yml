@@ -36,4 +36,4 @@ services:
     volumes:
       - .:/src
     image: MyOptiAlloySite/web
-    restart: on-failure
+    restart: unless-stopped

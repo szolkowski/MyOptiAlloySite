@@ -17,6 +17,25 @@ docker compose up --build
 
 > If switching from Windows/LocalDB to Docker, delete any `App_Data/*.mdf` and `App_Data/*.ldf` files first. These contain Windows-specific paths and are not compatible with the Linux-based SQL Server container.
 
+## Docker Compose commands
+
+All commands should be run from the `MyOptiAlloySite/` directory (where `docker-compose.yml` lives).
+
+| Command | Description |
+| ------- | ----------- |
+| `docker compose up --build` | Build images and start all services |
+| `docker compose up --build --no-cache` | Full rebuild ignoring Docker layer cache (use after changing NuGet packages or Dockerfile) |
+| `docker compose up -d` | Start services in detached (background) mode |
+| `docker compose down` | Stop and remove containers and networks |
+| `docker compose restart web` | Restart only the web container |
+| `docker compose build --no-cache web` | Rebuild only the web image from scratch |
+
+### Notes
+
+- The `web` service mounts the project source as a volume (`.:/src`), so code changes are reflected without rebuilding. However, changes to NuGet packages or the Dockerfile require `--build --no-cache`.
+- The database is ephemeral — it lives inside the `db` container and is recreated on `docker compose up` if the container was removed. Use `docker compose stop` instead of `docker compose down` to preserve the database between sessions.
+- The `db` service has a healthcheck, so the `web` container waits until the database is fully ready before starting.
+
 ## Changes made for macOS Docker support
 
 ### 1. Healthcheck and service dependency
