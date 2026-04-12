@@ -15,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="EPiServer.CMS" Version="13.0.0" />
     <PackageReference Include="EPiServer.Cms.UI.AspNetIdentity" Version="13.0.0" />
-    <PackageReference Include="OptiPowerTools.Hangfire" Version="2.0.0-beta" />
+    <PackageReference Include="OptiPowerTools.Hangfire" Version="2.0.1" />
     <PackageReference Include="Wangkanai.Detection" Version="8.7.0" />
   </ItemGroup>
   
