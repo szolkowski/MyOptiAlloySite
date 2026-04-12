@@ -4,7 +4,6 @@ using EPiServer.Data;
 using EPiServer.DependencyInjection;
 using EPiServer.Scheduler;
 using EPiServer.Web.Routing;
-using OptiPowerTools.Hangfire.Extensions;
 
 namespace MyOptiAlloySite;
 
@@ -27,12 +26,6 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
             .AddAlloy()
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>();
-
-        services.AddOptiPowerToolHangfire(options =>
-        {
-            options.ConnectionString = configuration.GetConnectionString("EPiServerDB")
-                ?? throw new InvalidOperationException("Hangfire connection string is not configured.");
-        });
 
         // Required by Wangkanai.Detection
         services.AddDetection();
@@ -61,10 +54,9 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.UseOptiPowerToolHangfire();
-
         app.UseEndpoints(endpoints =>
         {
+            endpoints.MapControllers();
             endpoints.MapContent();
         });
     }
