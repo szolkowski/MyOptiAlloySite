@@ -61,12 +61,12 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.UseEndpoints(endpoints => endpoints.MapControllers());
         app.UseOptiPowerToolHangfire();
 
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapContent();
+            endpoints.MapControllers();
         });
     }
 }
