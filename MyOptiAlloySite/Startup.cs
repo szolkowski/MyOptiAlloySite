@@ -1,4 +1,5 @@
 using MyOptiAlloySite.Extensions;
+using EPiServer.Cms.Shell.UI;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Data;
 using EPiServer.DependencyInjection;
@@ -25,7 +26,17 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
             .AddCmsAspNetIdentity<ApplicationUser>()
             .AddCms()
             .AddAlloy()
-            .AddAdminUserRegistration()
+            .AddAdminUserRegistration(options =>
+            {
+                // Defaults are Enabled | LocalRequestsOnly | SingleUserOnly, both of which block
+                // this setup: in Docker the site sees host requests coming from the bridge
+                // address rather than loopback, and the user table is not empty. Keep only
+                // Enabled in development so /Util/Register stays reachable for recovering access.
+                if (webHostingEnvironment.IsDevelopment())
+                {
+                    options.Behavior = RegisterAdminUserBehaviors.Enabled;
+                }
+            })
             .AddEmbeddedLocalization<Startup>();
 
         services.AddOptiPowerToolHangfire(options =>
