@@ -25,6 +25,7 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
         services
             .AddCmsAspNetIdentity<ApplicationUser>()
             .AddCms()
+            .AddCommerce()
             .AddAlloy()
             .AddAdminUserRegistration(options =>
             {
@@ -38,6 +39,8 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
                 }
             })
             .AddEmbeddedLocalization<Startup>();
+
+        services.AddCommerceSeeding();
 
         services.AddOptiPowerToolHangfire(options =>
         {
