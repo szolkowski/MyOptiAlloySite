@@ -27,7 +27,6 @@
     <!-- Lifts Hangfire.Core's vulnerable 11.0.1 pin. Commerce also brings 13.0.3
          transitively, but this resolves higher so it stays as the explicit floor. -->
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="OptiPowerTools.Hangfire" Version="2.0.1" />
     <PackageReference Include="Wangkanai.Detection" Version="8.20.0" />
   </ItemGroup>
   
