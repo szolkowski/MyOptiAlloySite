@@ -6,6 +6,7 @@ using EPiServer.DependencyInjection;
 using EPiServer.Scheduler;
 using EPiServer.Web.Routing;
 using OptiPowerTools.Hangfire.Extensions;
+using OptiPowerTools.ScheduledJobsInsights.Extensions;
 
 namespace MyOptiAlloySite;
 
@@ -48,6 +49,12 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
                 ?? throw new InvalidOperationException("Hangfire connection string is not configured.");
         });
 
+        services.AddOptiPowerToolScheduledJobsInsights(options =>
+        {
+            options.ConnectionString = configuration.GetConnectionString("EPiServerDB")
+                ?? throw new InvalidOperationException("Scheduled Jobs Insights connection string is not configured.");
+        });
+
         // Required by Wangkanai.Detection
         services.AddDetection();
 
@@ -76,6 +83,7 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
         app.UseAuthorization();
 
         app.UseOptiPowerToolHangfire();
+        app.UseOptiPowerToolScheduledJobsInsights();
 
         app.UseEndpoints(endpoints =>
         {
