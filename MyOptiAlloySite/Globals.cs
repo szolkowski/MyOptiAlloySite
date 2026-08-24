@@ -15,6 +15,9 @@ public class Globals
         [Display(Name = "Default", Order = 10)]
         public const string Default = "Default";
 
+        [Display(Name = "Catalog", Order = 15)]
+        public const string Catalog = "Catalog";
+
         [Display(Name = SystemTabNames.Content, Order = 20)]
         public const string Content = SystemTabNames.Content;
 
