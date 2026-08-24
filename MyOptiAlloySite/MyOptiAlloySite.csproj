@@ -15,6 +15,17 @@
   <ItemGroup>
     <PackageReference Include="EPiServer.CMS" Version="13.1.1" />
     <PackageReference Include="EPiServer.Cms.UI.AspNetIdentity" Version="13.1.1" />
+    <PackageReference Include="EPiServer.Commerce" Version="15.1.0" />
+    <!-- Commerce 15.1.0 references these three assemblies but declares none of them as
+         package dependencies, so startup fails on assembly load without them:
+           EPiServer.Events.ChangeNotification <- Mediachase.Search
+           EPiServer.OptimizelyIdentity        <- EPiServer.Commerce.UI.Admin
+           ...Authentication.OpenIdConnect     <- EPiServer.Commerce.Telemetric -->
+    <PackageReference Include="EPiServer.Events.ChangeNotification" Version="13.1.1" />
+    <PackageReference Include="EPiServer.OptimizelyIdentity" Version="13.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.11" />
+    <!-- Lifts Hangfire.Core's vulnerable 11.0.1 pin. Commerce also brings 13.0.3
+         transitively, but this resolves higher so it stays as the explicit floor. -->
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="OptiPowerTools.Hangfire" Version="2.0.1" />
     <PackageReference Include="Wangkanai.Detection" Version="8.20.0" />
@@ -22,5 +33,7 @@
   
   <ItemGroup>
     <EmbeddedResource Include="Resources\Translations\**\*" />
+    <!-- Read at runtime from the content root by the Commerce seed jobs. -->
+    <Content Update="SeedData\**\*.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

@@ -12,6 +12,7 @@ services:
     environment:
       SA_PASSWORD: ${SA_PASSWORD}
       DB_NAME: ${DB_NAME}
+      COMMERCE_DB_NAME: ${COMMERCE_DB_NAME}
       DB_DIRECTORY: ${DB_DIRECTORY}
     ports:
       - 6000:1433
@@ -22,7 +23,8 @@ services:
     networks:
       - myoptialloy-net
     healthcheck:
-      test: /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$$SA_PASSWORD" -Q "SELECT 1 FROM sys.databases WHERE name = '$$DB_NAME'" -C -h -1 | grep -q 1
+      # Both databases must exist, otherwise web starts before Commerce has a database.
+      test: /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$$SA_PASSWORD" -Q "SET NOCOUNT ON; SELECT COUNT(*) FROM sys.databases WHERE name IN ('$$DB_NAME', '$$COMMERCE_DB_NAME')" -C -h -1 -W | grep -qx 2
       interval: 5s
       timeout: 5s
       retries: 30
@@ -40,6 +42,7 @@ services:
       ASPNETCORE_URLS: http://*:80
       ASPNETCORE_ENVIRONMENT: Development
       CONNECTIONSTRINGS__EPISERVERDB: Server=db;Database=${DB_NAME};User Id=sa;Password=${SA_PASSWORD};Encrypt=False;
+      CONNECTIONSTRINGS__ECFSQLCONNECTION: Server=db;Database=${COMMERCE_DB_NAME};User Id=sa;Password=${SA_PASSWORD};Encrypt=False;
     ports:
       - 5100:80
     volumes:

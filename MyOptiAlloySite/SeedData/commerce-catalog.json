@@ -1,0 +1,473 @@
+{
+  "market": {
+    "name": "Alloy (Default)",
+    "currency": "USD",
+    "language": "en",
+    "countries": [
+      "USA",
+      "GBR",
+      "SWE"
+    ]
+  },
+  "warehouse": {
+    "code": "alloy-main",
+    "name": "Alloy Main Warehouse"
+  },
+  "catalog": {
+    "name": "Alloy Catalog"
+  },
+  "categories": [
+    {
+      "code": "software",
+      "name": "Software",
+      "teaser": "Licences for the Alloy product family."
+    },
+    {
+      "code": "services",
+      "name": "Services",
+      "teaser": "Implementation, support and advisory engagements."
+    },
+    {
+      "code": "training",
+      "name": "Training",
+      "teaser": "Courses and certification for Alloy teams."
+    }
+  ],
+  "products": [
+    {
+      "code": "alloy-plan",
+      "category": "software",
+      "name": "Alloy Plan",
+      "teaser": "Project planning that keeps distributed teams on the same page.",
+      "description": "<p>Alloy Plan turns scattered plans into a single schedule everyone can see, with dependencies, capacity and milestones in one view.</p>",
+      "sellingPoints": [
+        "Shared timelines across teams",
+        "Capacity planning built in",
+        "Milestone tracking with alerts"
+      ],
+      "variants": [
+        {
+          "code": "alloy-plan-basic-monthly",
+          "name": "Alloy Plan — Basic, monthly",
+          "tier": "Basic",
+          "billing": "Monthly",
+          "seats": 5,
+          "price": 29.0,
+          "stock": 240
+        },
+        {
+          "code": "alloy-plan-basic-annual",
+          "name": "Alloy Plan — Basic, annual",
+          "tier": "Basic",
+          "billing": "Annual",
+          "seats": 5,
+          "price": 290.0,
+          "stock": 240
+        },
+        {
+          "code": "alloy-plan-pro-monthly",
+          "name": "Alloy Plan — Pro, monthly",
+          "tier": "Pro",
+          "billing": "Monthly",
+          "seats": 25,
+          "price": 79.0,
+          "stock": 120
+        },
+        {
+          "code": "alloy-plan-pro-annual",
+          "name": "Alloy Plan — Pro, annual",
+          "tier": "Pro",
+          "billing": "Annual",
+          "seats": 25,
+          "price": 790.0,
+          "stock": 120
+        },
+        {
+          "code": "alloy-plan-enterprise-monthly",
+          "name": "Alloy Plan — Enterprise, monthly",
+          "tier": "Enterprise",
+          "billing": "Monthly",
+          "seats": 100,
+          "price": 199.0,
+          "stock": null
+        },
+        {
+          "code": "alloy-plan-enterprise-annual",
+          "name": "Alloy Plan — Enterprise, annual",
+          "tier": "Enterprise",
+          "billing": "Annual",
+          "seats": 100,
+          "price": 1990.0,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "code": "alloy-track",
+      "category": "software",
+      "name": "Alloy Track",
+      "teaser": "Issue tracking that stays readable as the backlog grows.",
+      "description": "<p>Alloy Track keeps work visible without ceremony — fast triage, honest reporting and a backlog that does not rot.</p>",
+      "sellingPoints": [
+        "Fast triage workflows",
+        "Reporting that matches reality",
+        "Integrates with Alloy Plan"
+      ],
+      "variants": [
+        {
+          "code": "alloy-track-basic-monthly",
+          "name": "Alloy Track — Basic, monthly",
+          "tier": "Basic",
+          "billing": "Monthly",
+          "seats": 5,
+          "price": 19.0,
+          "stock": 300
+        },
+        {
+          "code": "alloy-track-basic-annual",
+          "name": "Alloy Track — Basic, annual",
+          "tier": "Basic",
+          "billing": "Annual",
+          "seats": 5,
+          "price": 190.0,
+          "stock": 300
+        },
+        {
+          "code": "alloy-track-pro-monthly",
+          "name": "Alloy Track — Pro, monthly",
+          "tier": "Pro",
+          "billing": "Monthly",
+          "seats": 25,
+          "price": 59.0,
+          "stock": 150
+        },
+        {
+          "code": "alloy-track-pro-annual",
+          "name": "Alloy Track — Pro, annual",
+          "tier": "Pro",
+          "billing": "Annual",
+          "seats": 25,
+          "price": 590.0,
+          "stock": 150
+        },
+        {
+          "code": "alloy-track-enterprise-monthly",
+          "name": "Alloy Track — Enterprise, monthly",
+          "tier": "Enterprise",
+          "billing": "Monthly",
+          "seats": 100,
+          "price": 149.0,
+          "stock": null
+        },
+        {
+          "code": "alloy-track-enterprise-annual",
+          "name": "Alloy Track — Enterprise, annual",
+          "tier": "Enterprise",
+          "billing": "Annual",
+          "seats": 100,
+          "price": 1490.0,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "code": "alloy-meet",
+      "category": "software",
+      "name": "Alloy Meet",
+      "teaser": "Meetings with an agenda, a record and follow-through.",
+      "description": "<p>Alloy Meet attaches decisions and actions to the work they affect, so meetings leave a trace worth keeping.</p>",
+      "sellingPoints": [
+        "Agendas linked to work items",
+        "Automatic decision log",
+        "Actions land in Alloy Track"
+      ],
+      "variants": [
+        {
+          "code": "alloy-meet-basic-monthly",
+          "name": "Alloy Meet — Basic, monthly",
+          "tier": "Basic",
+          "billing": "Monthly",
+          "seats": 5,
+          "price": 15.0,
+          "stock": 180
+        },
+        {
+          "code": "alloy-meet-basic-annual",
+          "name": "Alloy Meet — Basic, annual",
+          "tier": "Basic",
+          "billing": "Annual",
+          "seats": 5,
+          "price": 150.0,
+          "stock": 180
+        },
+        {
+          "code": "alloy-meet-pro-monthly",
+          "name": "Alloy Meet — Pro, monthly",
+          "tier": "Pro",
+          "billing": "Monthly",
+          "seats": 25,
+          "price": 45.0,
+          "stock": 90
+        },
+        {
+          "code": "alloy-meet-pro-annual",
+          "name": "Alloy Meet — Pro, annual",
+          "tier": "Pro",
+          "billing": "Annual",
+          "seats": 25,
+          "price": 450.0,
+          "stock": 90
+        }
+      ]
+    },
+    {
+      "code": "alloy-implementation",
+      "category": "services",
+      "name": "Implementation Programme",
+      "teaser": "A guided rollout of the Alloy suite for your organisation.",
+      "description": "<p>A fixed-scope engagement covering configuration, data migration and rollout support.</p>",
+      "sellingPoints": [
+        "Fixed scope and fixed price",
+        "Data migration included",
+        "Rollout support for 90 days"
+      ],
+      "variants": [
+        {
+          "code": "alloy-implementation-standard",
+          "name": "Implementation — Standard",
+          "tier": "Standard",
+          "billing": "One-off",
+          "seats": 0,
+          "price": 12000.0,
+          "stock": null
+        },
+        {
+          "code": "alloy-implementation-complex",
+          "name": "Implementation — Complex estate",
+          "tier": "Complex",
+          "billing": "One-off",
+          "seats": 0,
+          "price": 28000.0,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "code": "alloy-support",
+      "category": "services",
+      "name": "Support Plan",
+      "teaser": "Named support contacts with agreed response times.",
+      "description": "<p>Escalation paths that skip the queue, with response times written into the contract.</p>",
+      "sellingPoints": [
+        "Named support contacts",
+        "Contractual response times",
+        "Quarterly service review"
+      ],
+      "variants": [
+        {
+          "code": "alloy-support-business",
+          "name": "Support — Business hours",
+          "tier": "Business",
+          "billing": "Annual",
+          "seats": 0,
+          "price": 4800.0,
+          "stock": null
+        },
+        {
+          "code": "alloy-support-24x7",
+          "name": "Support — 24/7",
+          "tier": "24x7",
+          "billing": "Annual",
+          "seats": 0,
+          "price": 14400.0,
+          "stock": null
+        }
+      ]
+    },
+    {
+      "code": "alloy-consulting",
+      "category": "services",
+      "name": "Advisory Days",
+      "teaser": "Senior advisory time, bought by the day.",
+      "description": "<p>Architecture review, process design or a second opinion — booked as whole days.</p>",
+      "sellingPoints": [
+        "Senior practitioners only",
+        "No minimum engagement",
+        "Remote or on site"
+      ],
+      "variants": [
+        {
+          "code": "alloy-consulting-day",
+          "name": "Advisory — single day",
+          "tier": "Single",
+          "billing": "One-off",
+          "seats": 0,
+          "price": 2200.0,
+          "stock": 40
+        },
+        {
+          "code": "alloy-consulting-block",
+          "name": "Advisory — ten day block",
+          "tier": "Block",
+          "billing": "One-off",
+          "seats": 0,
+          "price": 19800.0,
+          "stock": 12
+        }
+      ]
+    },
+    {
+      "code": "alloy-training-fundamentals",
+      "category": "training",
+      "name": "Alloy Fundamentals",
+      "teaser": "A two-day introduction for new Alloy teams.",
+      "description": "<p>Covers the core workflows across Plan, Track and Meet, with exercises on your own data.</p>",
+      "sellingPoints": [
+        "Two days, hands on",
+        "Uses your own project data",
+        "Recording included"
+      ],
+      "variants": [
+        {
+          "code": "alloy-training-fundamentals-online",
+          "name": "Fundamentals — online",
+          "tier": "Online",
+          "billing": "One-off",
+          "seats": 1,
+          "price": 890.0,
+          "stock": 60
+        },
+        {
+          "code": "alloy-training-fundamentals-onsite",
+          "name": "Fundamentals — on site",
+          "tier": "On site",
+          "billing": "One-off",
+          "seats": 12,
+          "price": 7900.0,
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "code": "alloy-training-advanced",
+      "category": "training",
+      "name": "Alloy Advanced",
+      "teaser": "Advanced configuration and reporting for administrators.",
+      "description": "<p>For administrators who need to shape Alloy around an existing process rather than the other way round.</p>",
+      "sellingPoints": [
+        "Custom workflow design",
+        "Reporting and dashboards",
+        "Administrator focused"
+      ],
+      "variants": [
+        {
+          "code": "alloy-training-advanced-online",
+          "name": "Advanced — online",
+          "tier": "Online",
+          "billing": "One-off",
+          "seats": 1,
+          "price": 1290.0,
+          "stock": 40
+        }
+      ]
+    },
+    {
+      "code": "alloy-certification",
+      "category": "training",
+      "name": "Alloy Certification",
+      "teaser": "Formal certification for Alloy practitioners.",
+      "description": "<p>A proctored assessment and a credential that is valid for two years.</p>",
+      "sellingPoints": [
+        "Proctored assessment",
+        "Two year validity",
+        "Retake included"
+      ],
+      "variants": [
+        {
+          "code": "alloy-certification-exam",
+          "name": "Certification — exam",
+          "tier": "Exam",
+          "billing": "One-off",
+          "seats": 1,
+          "price": 390.0,
+          "stock": 200
+        },
+        {
+          "code": "alloy-certification-bundle",
+          "name": "Certification — exam and prep",
+          "tier": "Bundle",
+          "billing": "One-off",
+          "seats": 1,
+          "price": 690.0,
+          "stock": 150
+        }
+      ]
+    }
+  ],
+  "customers": [
+    {
+      "firstName": "Ingrid",
+      "lastName": "Lindqvist",
+      "email": "ingrid.lindqvist@northwind.example",
+      "organization": "Northwind Consulting",
+      "city": "Stockholm",
+      "countryCode": "SWE"
+    },
+    {
+      "firstName": "Marcus",
+      "lastName": "Bell",
+      "email": "marcus.bell@harbourworks.example",
+      "organization": "Harbourworks Ltd",
+      "city": "Bristol",
+      "countryCode": "GBR"
+    },
+    {
+      "firstName": "Priya",
+      "lastName": "Raman",
+      "email": "priya.raman@fieldstone.example",
+      "organization": "Fieldstone Group",
+      "city": "Boston",
+      "countryCode": "USA"
+    },
+    {
+      "firstName": "Tomas",
+      "lastName": "Novak",
+      "email": "tomas.novak@brightline.example",
+      "organization": "Brightline AB",
+      "city": "Malmo",
+      "countryCode": "SWE"
+    },
+    {
+      "firstName": "Sarah",
+      "lastName": "OConnell",
+      "email": "sarah.oconnell@meridian.example",
+      "organization": "Meridian Partners",
+      "city": "Dublin",
+      "countryCode": "IRL"
+    },
+    {
+      "firstName": "Kenji",
+      "lastName": "Watanabe",
+      "email": "kenji.watanabe@ridgeline.example",
+      "organization": "Ridgeline Systems",
+      "city": "Seattle",
+      "countryCode": "USA"
+    }
+  ],
+  "campaign": {
+    "name": "Alloy Launch",
+    "description": "Introductory discounts across the Alloy range.",
+    "promotions": [
+      {
+        "name": "10% off orders over 500",
+        "spendThreshold": 500.0,
+        "percentOff": 10.0
+      },
+      {
+        "name": "15% off orders over 2000",
+        "spendThreshold": 2000.0,
+        "percentOff": 15.0
+      }
+    ]
+  }
+}
