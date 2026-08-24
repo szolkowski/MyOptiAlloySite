@@ -49,7 +49,7 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
                 ?? throw new InvalidOperationException("Hangfire connection string is not configured.");
         });
 
-        services.AddOptiPowerToolScheduledJobsInsights(options =>
+        services.AddOptiPowerToolsScheduledJobsInsights(options =>
         {
             options.ConnectionString = configuration.GetConnectionString("EPiServerDB")
                 ?? throw new InvalidOperationException("Scheduled Jobs Insights connection string is not configured.");
@@ -83,12 +83,25 @@ public class Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration c
         app.UseAuthorization();
 
         app.UseOptiPowerToolHangfire();
-        app.UseOptiPowerToolScheduledJobsInsights();
 
         app.UseEndpoints(endpoints =>
         {
+            // Scheduled Jobs Insights' Blazor hub has to be mapped inside this block, before
+            // MapContent(). MapContent() consolidates every endpoint data source registered on the
+            // route builder into its own snapshot; anything flushed to RouteOptions by an earlier,
+            // separate UseEndpoints(...) call gets consolidated as well while still staying
+            // registered on its own, so it ends up matched twice and every request to it fails with
+            // AmbiguousMatchException. Mapping it here keeps it in the single snapshot.
+            endpoints.MapOptiPowerToolsScheduledJobsInsights();
+
+            // MapContent() also maps the MVC controllers, so no MapControllers() here — a second
+            // call registers an independent ControllerActionEndpointDataSource and duplicates every
+            // attribute-routed action in the application, Optimizely's own included.
             endpoints.MapContent();
-            endpoints.MapControllers();
         });
+
+        // Map... above only maps the hub; Use... is what applies the pending EF migrations, and it
+        // no-ops on the hub because the Map... call already marked it as mapped.
+        app.UseOptiPowerToolsScheduledJobsInsights();
     }
 }
