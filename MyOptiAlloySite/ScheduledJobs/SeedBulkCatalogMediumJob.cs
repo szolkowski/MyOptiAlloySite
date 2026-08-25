@@ -1,5 +1,6 @@
 using EPiServer.Scheduler;
 using MyOptiAlloySite.Business.Commerce.Seeding.Bulk;
+using OptiPowerTools.ScheduledJobsInsights.Logging;
 
 namespace MyOptiAlloySite.ScheduledJobs;
 
@@ -15,7 +16,8 @@ namespace MyOptiAlloySite.ScheduledJobs;
 public sealed class SeedBulkCatalogMediumJob(
     BulkCatalogSeeder seeder,
     IWebHostEnvironment environment,
-    IConfiguration configuration) : BulkCatalogJobBase(seeder, environment, configuration)
+    IConfiguration configuration,
+    JobLoggingContext context) : BulkCatalogJobBase(seeder, environment, configuration, context)
 {
     protected override BulkCatalogProfile Profile => BulkCatalogProfile.Medium;
 }
