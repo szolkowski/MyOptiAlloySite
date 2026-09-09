@@ -1,5 +1,6 @@
 using EPiServer.Scheduler;
 using MyOptiAlloySite.Business.Commerce.Seeding;
+using OptiPowerTools.ScheduledJobsInsights.Logging;
 
 namespace MyOptiAlloySite.ScheduledJobs;
 
@@ -15,7 +16,8 @@ namespace MyOptiAlloySite.ScheduledJobs;
 public sealed class RemoveSeededCommerceDataJob(
     IEnumerable<ISeedStep> steps,
     IWebHostEnvironment environment,
-    IConfiguration configuration) : CommerceSeedJobBase(steps, environment, configuration)
+    IConfiguration configuration,
+    JobLoggingContext context) : CommerceSeedJobBase(steps, environment, configuration, context)
 {
     protected override bool IsReverse => true;
 
