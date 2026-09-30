@@ -1,6 +1,7 @@
 using System.Text;
 using EPiServer.Scheduler;
 using MyOptiAlloySite.Business.Commerce.Seeding;
+using OptiPowerTools.ScheduledJobsInsights.Logging;
 
 namespace MyOptiAlloySite.ScheduledJobs;
 
@@ -8,7 +9,7 @@ namespace MyOptiAlloySite.ScheduledJobs;
 /// Shared plumbing for the seed and teardown jobs: the environment guard, the ordered
 /// walk over the pipeline, progress reporting and stop handling.
 /// </summary>
-public abstract class CommerceSeedJobBase : ScheduledJobBase
+public abstract class CommerceSeedJobBase : LoggedScheduledJobBase
 {
     /// <summary>
     /// Seeding writes directly to the catalog, so both jobs are refused outside
@@ -25,7 +26,9 @@ public abstract class CommerceSeedJobBase : ScheduledJobBase
     protected CommerceSeedJobBase(
         IEnumerable<ISeedStep> steps,
         IWebHostEnvironment environment,
-        IConfiguration configuration)
+        IConfiguration configuration,
+        JobLoggingContext context)
+        : base(context)
     {
         _steps = steps;
         _environment = environment;
@@ -40,9 +43,7 @@ public abstract class CommerceSeedJobBase : ScheduledJobBase
 
     protected abstract SeedOutcome RunStep(ISeedStep step, SeedRunContext context);
 
-    public override void Stop() => _stopRequested = true;
-
-    public override string Execute()
+    protected override string ExecuteJob()
     {
         _stopRequested = false;
 

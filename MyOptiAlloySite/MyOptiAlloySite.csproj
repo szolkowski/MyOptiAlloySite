@@ -3,6 +3,10 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Required by OptiPowerTools.ScheduledJobsInsights: its admin UI is a Blazor Server
+         component, so this app has to serve _framework/blazor.server.js. The Web SDK only
+         references the assets pack when the app project itself contains .razor files. -->
+    <RequiresAspNetWebAssets>true</RequiresAspNetWebAssets>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +32,7 @@
          transitively, but this resolves higher so it stays as the explicit floor. -->
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="OptiPowerTools.Hangfire" Version="2.0.1" />
+    <PackageReference Include="OptiPowerTools.ScheduledJobsInsights" Version="1.0.0" />
     <PackageReference Include="Wangkanai.Detection" Version="8.20.0" />
   </ItemGroup>
   

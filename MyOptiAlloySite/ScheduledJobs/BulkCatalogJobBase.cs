@@ -3,6 +3,7 @@ using System.Text;
 using EPiServer.Scheduler;
 using MyOptiAlloySite.Business.Commerce.Seeding;
 using MyOptiAlloySite.Business.Commerce.Seeding.Bulk;
+using OptiPowerTools.ScheduledJobsInsights.Logging;
 
 namespace MyOptiAlloySite.ScheduledJobs;
 
@@ -11,18 +12,27 @@ namespace MyOptiAlloySite.ScheduledJobs;
 /// timing. Each dataset gets its own job so the three can be run, stopped and re-run
 /// independently.
 /// </summary>
-public abstract class BulkCatalogJobBase(
-    BulkCatalogSeeder seeder,
-    IWebHostEnvironment environment,
-    IConfiguration configuration) : ScheduledJobBase
+public abstract class BulkCatalogJobBase : LoggedScheduledJobBase
 {
     private bool _stopRequested;
+    private readonly BulkCatalogSeeder seeder;
+    private readonly IWebHostEnvironment environment;
+    private readonly IConfiguration configuration;
+
+    public BulkCatalogJobBase(
+        BulkCatalogSeeder seeder,
+        IWebHostEnvironment environment,
+        IConfiguration configuration,
+        JobLoggingContext context) : base(context)
+    {
+        this.seeder = seeder;
+        this.environment = environment;
+        this.configuration = configuration;
+    }
 
     protected abstract BulkCatalogProfile Profile { get; }
 
-    public override void Stop() => _stopRequested = true;
-
-    public override string Execute()
+    protected override string ExecuteJob()
     {
         _stopRequested = false;
         IsStoppable = true;
